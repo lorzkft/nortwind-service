@@ -1,0 +1,8 @@
+@import "../../styles/utilities/variables";
+
+header {
+  .header-container {
+    max-width: $max-width;
+    margin: auto;    
+  }
+}

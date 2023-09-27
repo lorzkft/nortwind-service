@@ -16,7 +16,9 @@ namespace NorthwindService.Services
 
         public IQueryable<Product> GetProducts()
         {
-            return _northwindEntities.Products;
+            return _northwindEntities.Products
+                .Expand(p => p.Category)
+                .Expand(p => p.Supplier);
         }
 
         public IQueryable<ProductSummary> GetProductSuppplierQuantityAggragation()

@@ -1,0 +1,30 @@
+import React, { ReactNode, useState, useEffect } from 'react';
+import DeviceContext from './DeviceContext';
+
+interface DeviceProviderProps {
+  children: ReactNode;
+}
+
+const DeviceProvider: React.FC<DeviceProviderProps> = ({ children }) => {
+  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  return (
+    <DeviceContext.Provider value={{ isMobile }}>
+      {children}
+    </DeviceContext.Provider>
+  );
+};
+
+export default DeviceProvider;

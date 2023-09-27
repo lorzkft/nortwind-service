@@ -1,0 +1,13 @@
+@import '../utilities/variables';
+
+.container {
+    max-width: $max-width;
+    margin: 0 auto;
+    width: 100%;
+
+    @media (max-width: 576px) {
+        .container {
+            padding: 0;
+        }
+    }
+}

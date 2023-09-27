@@ -1,0 +1,62 @@
+@import "../../styles/utilities/variables";
+
+footer {
+  padding-top: 30px;
+
+  .footer-container {
+
+    border-top: 1px solid #b0aceb;
+
+    .footer-content {
+      max-width: $max-width;
+      margin: auto;
+
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      color: #b0aceb;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+      }
+    }
+
+    .footer-column {
+      flex: 1;
+
+      h3 {
+        color: #b0aceb;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        text-transform: uppercase;
+        padding-bottom: 5px;
+
+        &.copyright {
+          text-transform: none;
+        }
+      }
+
+      a {
+        display: block;
+        color: #b0aceb;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 28px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+}
