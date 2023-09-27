@@ -16,9 +16,13 @@ namespace NorthwindService.Services
 
         public IQueryable<Product> GetProducts()
         {
-            return _northwindEntities.Products
+            // Workaround: Generates too complex query which cannot be resolved by the OData client. (for contains filtering)
+            return _northwindEntities.Products                
                 .Expand(p => p.Category)
-                .Expand(p => p.Supplier);
+                .Expand(p => p.Supplier)
+                .GetAllPages()
+                .ToList()
+                .AsQueryable();
         }
 
         public IQueryable<ProductSummary> GetProductSuppplierQuantityAggragation()

@@ -14,14 +14,14 @@ const ProductsTable: React.FC = () => {
     setLoading(true)
     try {
       const queryOptions = {
-        filter: searchText ? `ProductName eq '${encodeURI(searchText)}'` : '',
+        filter: searchText ? `contains(tolower(productName), '${encodeURI(searchText.toLowerCase())}')` : '',
         orderBy: ['ProductName asc'],
       }
       const fetchedProducts = await apiService.get(
         '/Products/Get',
         queryOptions,
       )
-      setProducts(fetchedProducts || [])
+      setProducts(fetchedProducts?.value || [])
     } catch (error) {
       console.error('Failed to fetch products', error)
     } finally {

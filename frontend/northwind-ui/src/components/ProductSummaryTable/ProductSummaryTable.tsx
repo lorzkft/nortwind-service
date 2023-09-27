@@ -17,7 +17,7 @@ const ProductSummaryTable: React.FC = () => {
         '/Orders/GetSummary',
         queryOptions,
       )
-      setSummaries(fetchedSummaries || [])
+      setSummaries(fetchedSummaries?.value || [])
     } catch (error) {
       console.error('Failed to fetch product summaries', error)
     } finally {

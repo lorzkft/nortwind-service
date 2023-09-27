@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
+using NorthwindService.Api.Attributes;
 using NorthwindService.Domain.Models;
 using NorthwindService.Services.Interfaces;
 
@@ -17,7 +18,7 @@ namespace NorthwindService.Api.Controllers
             _northwindService = northwindService;
         }
 
-        [EnableQuery]
+        [EnableQueryWithMetadata]
         [HttpGet(nameof(GetSummary))]
         public IQueryable<ProductSummary> GetSummary()
         {

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
 using NorthwindModel;
+using NorthwindService.Api.Attributes;
 using NorthwindService.Services.Interfaces;
 
 namespace NorthwindService.Api.Controllers
@@ -17,7 +18,7 @@ namespace NorthwindService.Api.Controllers
             _northwindService = northwindService;
         }
 
-        [EnableQuery]
+        [EnableQueryWithMetadata]
         [HttpGet(nameof(Get))]
         public IQueryable<Product> Get()
         {
